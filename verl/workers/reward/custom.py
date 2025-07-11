@@ -48,6 +48,9 @@ class CustomRewardManager:
         score_l=0
         already_print=0
         # len(data) = 60
+        
+        constraint_response_lst = []
+
         for i in range(len(data)):
             
             data_item = data[i]  # DataProtoItem
@@ -67,6 +70,17 @@ class CustomRewardManager:
             response_str = self.tokenizer.decode(valid_response_ids, skip_special_tokens=True)
 
             ground_truth = data_item.non_tensor_batch["ground_truth"]
+
+            constraints = ground_truth['instruction_id_list']
+
+ 
+            
+            constraint_response_lst.append({"cc": constraints,'rl': valid_response_length})
+            
+
+            
+
+
             if self.mode == "train":
                 score = self.compute_score(response_str, ground_truth)
             elif self.mode == "val":
@@ -84,11 +98,11 @@ class CustomRewardManager:
                 # print("[ground_truth]", ground_truth)
                 print("[reward score]", score)
 
+       
+
         if self.mode=='train':
-            return reward_tensor
+            return reward_tensor, constraint_response_lst
         elif self.mode=='val':
             score_c =ac_count/c_count
             score_l = score_l/len(data)
             return reward_tensor,score_c,score_l
-        
-        
