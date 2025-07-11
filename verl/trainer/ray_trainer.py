@@ -637,7 +637,7 @@ class RayPPOTrainer:
                             gen_baseline_output = self.actor_rollout_wg.generate_sequences(gen_baseline_batch)
 
                             batch = batch.union(gen_baseline_output)
-                            reward_baseline_tensor = self.reward_fn(batch)
+                            reward_baseline_tensor, _ = self.reward_fn(batch)
                             reward_baseline_tensor = reward_baseline_tensor.sum(dim=-1)
 
                             batch.pop(batch_keys=list(gen_baseline_output.batch.keys()))
@@ -682,8 +682,9 @@ class RayPPOTrainer:
                             raise NotImplementedError("RM is not supported for PPO yet.")
 
                         # we combine with rule-based rm
-                        reward_tensor = self.reward_fn(batch)
+                        reward_tensor, constraint_response_lst  = self.reward_fn(batch)
                         batch.batch["token_level_scores"] = reward_tensor
+                        batch.batch["constraint_response_length"] = constraint_response_lst
 
                         # compute rewards. apply_kl_penalty if available
                         if not self.config.worker.actor.use_kl_loss:  # not grpo's kl loss
@@ -735,6 +736,8 @@ class RayPPOTrainer:
 
                 # collect metrics
                 n_gpus = self.resource_pool_manager.get_n_gpus()
+                metrics.update(compute_data_metrics(batch=batch, use_critic=self.use_critic))
+                print("")
                 metrics.update(compute_data_metrics(batch=batch, use_critic=self.use_critic))
                 metrics.update(compute_timing_metrics(batch=batch, timing_raw=timing_raw))
                 metrics.update(compute_throughout_metrics(batch=batch, timing_raw=timing_raw, n_gpus=n_gpus))
