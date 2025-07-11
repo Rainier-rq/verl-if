@@ -41,6 +41,37 @@ def compute_data_metrics(batch: DataProto, use_critic: bool = False) -> Dict[str
     sequence_score = batch.batch["token_level_scores"].sum(-1)
     sequence_reward = batch.batch["token_level_rewards"].sum(-1)
 
+    #add
+    length1 = 0  # 统计 "light" 在 cc 中的 rl 总和
+    length2 = 0  # 统计 "light_choice" 在 cc 中的 rl 总和
+    length3 = 0  # 统计其他情况的 rl 总和
+
+    count1 = 0  # 统计 "light" 出现的次数
+    count2 = 0  # 统计 "light_choice" 出现的次数
+    count3 = 0  # 统计其他情况出现的次数
+
+    # 遍历列表中的每个 item
+    for item in batch.batch["constraint_response_length"]:
+        cc = item["cc"]  # 获取约束列表
+        rl = item["rl"]  # 获取有效响应长度
+        
+        if "light" in cc:
+            length1 += rl
+            count1 += 1
+        elif "light_choice" in cc:
+            length2 += rl
+            count2 += 1
+        else:
+            length3 += rl
+            count3 += 1
+
+    # 计算平均值
+    avg_length1 = length1 / count1 if count1 > 0 else 0
+    avg_length2 = length2 / count2 if count2 > 0 else 0
+    avg_length3 = length3 / count3 if count3 > 0 else 0
+
+
+
     advantages = batch.batch["advantages"]
     returns = batch.batch["returns"]
 
@@ -100,6 +131,9 @@ def compute_data_metrics(batch: DataProto, use_critic: bool = False) -> Dict[str
         "response_length/clip_ratio": torch.mean(torch.eq(response_length, max_response_length).float())
         .detach()
         .item(),
+        "response_length/if":avg_length3,
+        "response_length/math": avg_length1,
+        "response_length/science": avg_length2,
         # prompt length
         "prompt_length/mean": torch.mean(prompt_length).detach().item(),
         "prompt_length/max": torch.max(prompt_length).detach().item(),
