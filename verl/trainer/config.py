@@ -41,11 +41,21 @@ class DataConfig:
     max_prompt_length: int = 512
     max_response_length: int = 512
     rollout_batch_size: int = 512
-    system_prompt: Optional[str] = None
+    val_batch_size: int = -1
+    format_prompt: Optional[str] = None
+    override_chat_template: Optional[str] = None
     shuffle: bool = True
     seed: int = 1
     max_pixels: int = 4194304
     min_pixels: int = 262144
+    filter_overlong_prompts: bool = True
+
+    def post_init(self):
+        if self.format_prompt is not None:
+            if os.path.exists(self.format_prompt):  # ray job uses absolute path
+                self.format_prompt = os.path.abspath(self.format_prompt)
+            else:
+                self.format_prompt = None
 
 
 @dataclass
@@ -53,16 +63,18 @@ class AlgorithmConfig:
     gamma: float = 1.0
     lam: float = 1.0
     adv_estimator: str = "grpo"
+    disable_kl: bool = False
+    use_kl_loss: bool = False
     kl_penalty: str = "kl"
-    kl_type: str = "fixed"
     kl_coef: float = 1e-3
+    kl_type: str = "fixed"
     kl_horizon: float = 0.0
     kl_target: float = 0.0
 
 
 @dataclass
 class TrainerConfig:
-    total_episodes: int = 10
+    total_epochs: int = 10
     max_steps: Optional[int] = None
     project_name: str = "easy_r1"
     experiment_name: str = "demo"
@@ -73,16 +85,19 @@ class TrainerConfig:
     val_freq: int = -1
     val_before_train: bool = True
     val_only: bool = False
-    val_generations_to_log: int = 1
+    val_generations_to_log: int = 0
     save_freq: int = -1
-    remove_previous_ckpt: bool = False
-    remove_ckpt_after_load: bool = False
+    save_limit: int = -1
     save_checkpoint_path: Optional[str] = None
     load_checkpoint_path: Optional[str] = None
 
     def post_init(self):
         if self.save_checkpoint_path is None:
             self.save_checkpoint_path = os.path.join("checkpoints", self.project_name, self.experiment_name)
+
+        self.save_checkpoint_path = os.path.abspath(self.save_checkpoint_path)  # ray job uses absolute path
+        if self.load_checkpoint_path is not None:
+            self.load_checkpoint_path = os.path.abspath(self.load_checkpoint_path)
 
 
 @dataclass
@@ -95,6 +110,11 @@ class PPOConfig:
     def post_init(self):
         self.worker.rollout.prompt_length = self.data.max_prompt_length
         self.worker.rollout.response_length = self.data.max_response_length
+        self.worker.rollout.trust_remote_code = self.worker.actor.model.trust_remote_code
+        self.worker.actor.disable_kl = self.algorithm.disable_kl
+        self.worker.actor.use_kl_loss = self.algorithm.use_kl_loss
+        self.worker.actor.kl_penalty = self.algorithm.kl_penalty
+        self.worker.actor.kl_coef = self.algorithm.kl_coef
 
     def deep_post_init(self):
         recursive_post_init(self)
