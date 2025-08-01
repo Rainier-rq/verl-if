@@ -26,7 +26,7 @@
 ## 3. Start Multi-machine Training Service
 1. Edit the training startup script:
    ```bash
-   verl/examples/qwen2_7b_instruction.sh
+   examples/qwen2_7b_instruction.sh
    ```
    - Replace the **model checkpoint path** with the actual path
 2. Modify the configuration file:
