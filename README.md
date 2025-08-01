@@ -6,7 +6,7 @@
   - **Multiple GPU machines**: for training
 ---
 ## 1. Start RM Service
-1. Open and edit `verl/bia_use.py`:
+1. Open and edit `bia_use.py`:
    - Modify the **RM model path** in the script to your local or remote model's actual path.
 2. Run on development machine:
    ```bash
