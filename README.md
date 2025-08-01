@@ -35,7 +35,16 @@
    ```
    - Configure the correct **model path**
    - Configure **number of nodes, communication ports** and other parameters
-3. Start training (execute on master node):
+3. Start the Ray head node.
+   ```bash
+   ray start --include-dashboard=True --head --num-gpus 8 --max-worker-port 12800 --runtime-env-agent-port 20100 --dashboard-agent-grpc-port 20101 --dashboard-agent-listen-port 20102 --metrics-export-port 20103
+   ```
+4. Start the Ray worker node and connect to the head node.
+   ```bash
+   ray start --address $MASTER_IP:6379 --num-gpus 8 --max-worker-port 12800 --runtime-env-agent-port 20100 --dashboard-agent-grpc-port 20101 --dashboard-agent-listen-port 20102 --metrics-export-port 20103 --block
+   ```
+   MASTER_IP refers to the IP address obtained in previous step.
+7. Start training (execute on master node):
    ```bash
    sh verl/examples/qwen2_7b_instruction.sh
    ```
