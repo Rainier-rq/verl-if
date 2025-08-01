@@ -43,7 +43,7 @@
    ```bash
    ray start --address $MASTER_IP:6379 --num-gpus 8 --max-worker-port 12800 --runtime-env-agent-port 20100 --dashboard-agent-grpc-port 20101 --dashboard-agent-listen-port 20102 --metrics-export-port 20103 --block
    ```
-   MASTER_IP refers to the IP address obtained in previous step.
+   - MASTER_IP refers to the IP address obtained in previous step.
 7. Start training (execute on master node):
    ```bash
    sh verl/examples/qwen2_7b_instruction.sh
