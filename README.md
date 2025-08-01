@@ -10,8 +10,9 @@
    - Modify the **RM model path** in the script to your local or remote model's actual path.
 2. Run on development machine:
    ```bash
-   pythonbia_use.py
+   python verl/bia_use.py
    ```
+3. After successful startup, the console will output the **IP address** and **port number** of the RM service.
 ---
 ## 2. Configure Reward Interface
 1. Open `verl/verl/utils/reward_score/instruction_reward.py`
