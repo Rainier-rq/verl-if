@@ -10,7 +10,7 @@
    - Modify the **model_name** in the script to your local model's actual path.
 2. Run on development machine:
    ```bash
-   python verl/bia_use.py
+   python bia_use.py
    ```
 3. After successful startup, the console will output the **IP address** and **port number** of the RM service.
 ---
