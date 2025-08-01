@@ -1,6 +1,6 @@
 data:
-  train_files: ./data/train_all_scaler_processed_2w_dp.parquet
-  val_files: ./data/test.parquet
+  train_files: data/train_all_scaler_processed_2w_dp.parquet
+  val_files: data/test.parquet
   prompt_key: prompt
   max_prompt_length: 2048
   max_response_length: 8192
@@ -70,8 +70,8 @@ worker:
 trainer:
   total_episodes: 15
   logger: ["swanlab"]
-  project_name: if_all_dp_nc
-  experiment_name: qwen2_5_7b
+  project_name: if_distill
+  experiment_name: qwen
   n_gpus_per_node: 8
   nnodes: 3
   val_freq: 52
@@ -81,5 +81,5 @@ trainer:
   save_freq: 52
   remove_previous_ckpt: false
   remove_ckpt_after_load: false
-  save_checkpoint_path: ./checkpoints/if_all_dp_nc/qwen2_5_7b
+  save_checkpoint_path: checkpoints/if_distill/qwen
   load_checkpoint_path: null
