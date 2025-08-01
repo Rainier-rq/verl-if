@@ -1,6 +1,6 @@
 data:
-  train_files: /fs-computility/wangxuhong/renqingyu/qingyu/verl/data/train_all_scaler_processed_2w_dp.parquet
-  val_files: /fs-computility/wangxuhong/renqingyu/qingyu/verl/data/test.parquet
+  train_files: ./verl/data/train_all_scaler_processed_2w_dp.parquet
+  val_files: ./verl/data/test.parquet
   prompt_key: prompt
   max_prompt_length: 2048
   max_response_length: 8192
@@ -81,5 +81,5 @@ trainer:
   save_freq: 52
   remove_previous_ckpt: false
   remove_ckpt_after_load: false
-  save_checkpoint_path: /tos/rqy/qingyu/verl/checkpoints/if_all_dp_nc/qwen2_5_7b
+  save_checkpoint_path: ./verl/checkpoints/if_all_dp_nc/qwen2_5_7b
   load_checkpoint_path: null
