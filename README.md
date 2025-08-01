@@ -62,7 +62,7 @@
 | **Start RM Service** | Run `python bia_use.py` on development machine and modify RM model path |
 | **Configure Reward** | Fill in IP/Port in `instruction_reward.py` and adjust regex matching |
 | **Configure Training Script** | Edit `qwen2_7b_instruction.sh` and `config.yaml`, update paths and node count |
-| **Start Training**   | Execute `sh verl/examples/qwen2_7b_instruction.sh` |
+| **Start Training**   | Execute `sh examples/qwen2_7b_instruction.sh` |
 ---
 ## Quick Command Summary
 ```bash
