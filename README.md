@@ -7,7 +7,7 @@
 ---
 ## 1. Start RM Service
 1. Open and edit `bia_use.py`:
-   - Modify the **RM model path** in the script to your local or remote model's actual path.
+   - Modify the **model_name** in the script to your local model's actual path.
 2. Run on development machine:
    ```bash
    python verl/bia_use.py
