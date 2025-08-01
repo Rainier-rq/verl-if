@@ -58,9 +58,9 @@
 ## Quick Command Summary
 ```bash
 # 1. Start RM service (single-GPU development machine)
-python verl/bia_use.py  # Note: modify RM model path
+python bia_use.py  # Note: modify RM model path
 # 2. Start multi-machine training (execute on master node)
-sh verl/examples/qwen2_7b_instruction.sh  # Note: configure paths and node parameters
+sh examples/qwen2_7b_instruction.sh  # Note: configure paths and node parameters
 ```
 ---
 ## 🙋 Support
