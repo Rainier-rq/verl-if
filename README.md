@@ -3,7 +3,10 @@
 [![HuggingFace](https://img.shields.io/badge/%F0%9F%A4%97-huggingface-yellow)](https://huggingface.co/datasets/dd12345789/Self-Supervised_RL)
 
 ## 🔧 Environment Setup
-- Python and required dependencies (see project requirements)
+- Python and required dependencies
+  ```bash
+   pip install -e .
+   ```
 - Recommended:
   - **1 single-GPU machine**: for RM service only
   - **Multiple GPU machines**: for training
