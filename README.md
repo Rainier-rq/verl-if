@@ -84,9 +84,9 @@ sh examples/qwen2_7b_instruction.sh  # Note: configure paths and node parameters
 ```
 ---
 ## 🙋 Support
----
 If you have any questions or issues, please feel free to raise them in Issues or contact us. 😄
 
+---
 ## 📚 Acknowledgments
 This project is built upon the excellent framework [EasyR1](https://github.com/hiyouga/EasyR1). We thank the contributors for their outstanding work.
 
