@@ -1,6 +1,6 @@
 # 🚀 verl-if
 [![Github](https://img.shields.io/static/v1?logo=github&style=flat&color=pink&label=github&message=Rainier-rq/verl-if)]([https://github.com/Rainier-rq/verl-if])
-[![HuggingFace](https://img.shields.io/badge/%F0%9F%A4%97-huggingface-yellow)](https://huggingface.co/datasets/Abbey4799/Complex-Instructions-DPO)
+[![HuggingFace](https://img.shields.io/badge/%F0%9F%A4%97-huggingface-yellow)](https://huggingface.co/datasets/dd12345789/Self-Supervised_RL)
 
 ## 🔧 Environment Setup
 - Python and required dependencies (see project requirements)
