@@ -18,7 +18,7 @@
 ---
 ## 2. Start RM Service
 1. Open and edit `bia_use.py`:
-   - Modify the **model_name** in the script to your local model's actual path.
+   - Modify the **model_name** in the script to your trained reward model's path.
 2. Run on development machine:
    ```bash
    python bia_use.py
