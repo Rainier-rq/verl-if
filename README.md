@@ -34,7 +34,7 @@
    ```
    Modify the `</think>\n\n(.*)` matching rule according to your model's output format to correctly extract the answer content.
 ---
-## 4. Start Multi-machine Training Service
+## 4. RL Training 
 1. Edit the training startup script:
    ```bash
    examples/qwen2_7b_instruction.sh
