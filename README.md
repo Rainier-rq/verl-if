@@ -67,7 +67,7 @@
   - Whether network connectivity is normal
   - Whether node count and port configurations are consistent across nodes
 ---
-## 5. Usage Flow Overview
+## 6. Usage Flow Overview
 | Step               | Operation Content |
 |--------------------|-------------------|
 | **Start RM Service** | Run `python bia_use.py` on development machine and modify RM model path |
