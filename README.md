@@ -9,7 +9,7 @@
    ```
 - Recommended:
   - **1 single-GPU machine**: for RM service only
-  - **Multi-node, multi-GPU systems**: for training (In our experiments, we used 3 nodes, each equipped with 8 GPUs.)
+  - **Multi-node, multi-GPU systems**: for RL training (In our experiments, we used 3 nodes, each equipped with 8 GPUs.)
 ---
 ## 1. RM Training
    ```bash
