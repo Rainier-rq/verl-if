@@ -13,7 +13,7 @@
 ---
 ## 1. RM Training
    ```bash
-   deepspeed --num_gpus 8 bia.py
+   deepspeed --num_gpus 8 rm_train.py
    ```
 ---
 ## 2. Start RM Service
