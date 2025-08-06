@@ -57,7 +57,7 @@
    - MASTER_IP refers to the IP address obtained in previous step.
 7. Start training (execute on master node):
    ```bash
-   sh verl/examples/qwen2_7b_instruction.sh
+   sh examples/qwen2_7b_instruction.sh
    ```
 ---
 ## 5. Debugging and Notes
