@@ -10,12 +10,7 @@
   - **1 single-GPU machine**: for RM service only
   - **Multi-node, multi-GPU systems**: for RL training (In our experiments, we used 3 nodes, each equipped with 8 GPUs.)
 ---
-## 1. RM Training
-   ```bash
-   deepspeed --num_gpus 8 rm_train.py
-   ```
----
-## 2. Start RM Service
+## 1. Start RM Service
 1. Open and edit `bia_use.py`:
    - Modify the **model_name** in the script to your trained reward model's path.
 2. Run on development machine:
@@ -24,7 +19,7 @@
    ```
 3. After successful startup, the console will output the **IP address** and **port number** of the RM service.
 ---
-## 3. Configure Reward Interface
+## 2. Configure Reward Interface
 1. Open `verl/utils/reward_score/instruction_reward.py`
 2. Replace the **IP and Port** in the file with the address displayed when the RM service started.
 3. If the model output format is different, adjust the following regex matching code:
@@ -33,7 +28,7 @@
    ```
    Modify the `</think>\n\n(.*)` matching rule according to your model's output format to correctly extract the answer content.
 ---
-## 4. RL Training 
+## 3. RL Training 
 1. Edit the training startup script:
    ```bash
    examples/qwen2_7b_instruction.sh
@@ -59,14 +54,14 @@
    sh examples/qwen2_7b_instruction.sh
    ```
 ---
-## 5. Debugging and Notes
+## 4. Debugging and Notes
 - If model output format is different, ensure **regex matching correctly extracts the answer**.
 - For multi-machine deployment, pay attention to:
   - Whether paths are correct
   - Whether network connectivity is normal
   - Whether node count and port configurations are consistent across nodes
 ---
-## 6. Usage Flow Overview
+## 5. Usage Flow Overview
 | Step               | Operation Content |
 |--------------------|-------------------|
 | **Start RM Service** | Run `python bia_use.py` on development machine and modify RM model path |
