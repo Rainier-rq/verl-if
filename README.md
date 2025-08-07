@@ -71,11 +71,9 @@
 ---
 ## Quick Command Summary
 ```bash
-# 1. RM Training
-deepspeed --num_gpus 8 bia.py
-# 2. Start RM service (single-GPU development machine)
+# 1. Start RM service (single-GPU development machine)
 python bia_use.py  # Note: modify RM model path
-# 3. Start multi-machine training (execute on master node)
+# 2. Start multi-machine training (execute on master node)
 sh examples/qwen2_7b_instruction.sh  # Note: configure paths and node parameters
 ```
 ---
