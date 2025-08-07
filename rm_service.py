@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 
 # Load model and tokenizer
-model_name = "/tos/rqy/bia_class/cfbench/checkpoint-5274"
+model_name = ""
 tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=True)
 model = AutoModelForSequenceClassification.from_pretrained(
     model_name, 
