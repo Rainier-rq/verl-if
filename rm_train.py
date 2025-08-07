@@ -101,7 +101,7 @@ def main():
     
     # 6. Training arguments
     training_args = TrainingArguments(
-        output_dir="/nas/shared/kilab/hf-hub/cfbench",
+        output_dir=" ",
         eval_strategy="epoch",
         save_strategy="epoch",
         per_device_train_batch_size=1,
