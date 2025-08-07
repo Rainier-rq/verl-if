@@ -11,11 +11,11 @@
   - **Multi-node, multi-GPU systems**: for RL training (In our experiments, we used 3 nodes, each equipped with 8 GPUs.)
 ---
 ## 1. Start RM Service
-1. Open and edit `bia_use.py`:
+1. Open and edit `rm_service.py`:
    - Modify the **model_name** in the script to your trained reward model's path.
 2. Run on development machine:
    ```bash
-   python bia_use.py
+   python rm_service.py
    ```
 3. After successful startup, the console will output the **IP address** and **port number** of the RM service.
 ---
