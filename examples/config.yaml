@@ -1,6 +1,6 @@
 data:
-  train_files: data/train_all_scaler_processed_2w_dp.parquet
-  val_files: data/test.parquet
+  train_files: 
+  val_files: 
   prompt_key: prompt
   max_prompt_length: 2048
   max_response_length: 8192
