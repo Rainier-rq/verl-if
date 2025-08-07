@@ -1,6 +1,6 @@
 data:
-  train_files: 
-  val_files: 
+  train_files: train.parquet
+  val_files: test.parquet
   prompt_key: prompt
   max_prompt_length: 2048
   max_response_length: 8192
