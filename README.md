@@ -26,7 +26,7 @@
 3. After successful startup, the console will output the **IP address** and **port number** of the RM service.
 ---
 ## 3. Configure Reward Interface
-1. Open `verl/verl/utils/reward_score/instruction_reward.py`
+1. Open `verl/utils/reward_score/instruction_reward.py`
 2. Replace the **IP and Port** in the file with the address displayed when the RM service started.
 3. If the model output format is different, adjust the following regex matching code:
    ```python
