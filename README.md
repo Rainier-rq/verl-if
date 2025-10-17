@@ -1,4 +1,4 @@
-# 🚀 Beyond the Trade-off: Self-Supervised Reinforcement Learning for Reasoning Models’ Instruction Following
+# 🚀 Instructions are all you need: Self-supervised Reinforcement Learning for Instruction Following
 [![Github](https://img.shields.io/static/v1?logo=github&style=flat&color=pink&label=github&message=Rainier-rq/verl-if)]([https://github.com/Rainier-rq/verl-if])
 ![image](https://github.com/Rainier-rq/verl-if/blob/main/assets/method.jpeg)
 ## 🔧 Environment Setup
