@@ -146,10 +146,10 @@ class RLHFDataset(Dataset):
 
     def __getitem__(self, index):
         row_dict: dict = self.dataset[index]
-        # messages = [{"role": "user", "content": row_dict[self.prompt_key] +  '\n\n' + 'Remember: We will check for the "<think>.*</think><answer>.*</answer>" pattern to ensure compliance.'}]
         messages = [{"role": "user", "content": row_dict[self.prompt_key]}]
-        # if self.system_prompt:
-        #     messages.insert(0, {"role": "system", "content": self.system_prompt})
+
+        # messages.insert(0, {"role": "system", "content": "Output your answer strictly following the format: <think> [your step-by-step analysis] </think><answer>[your answer]</answer>"})
+
 
         prompt = self.tokenizer.apply_chat_template(messages, add_generation_prompt=True, tokenize=False)
 
