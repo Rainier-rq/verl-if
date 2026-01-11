@@ -8,7 +8,7 @@
    ```
 - Recommended:
   - **1 single-GPU machine**: for RM service only
-  - **Multi-node, multi-GPU systems**: for RL training (In our experiments, we used 3 nodes, each equipped with 8 GPUs.)
+  - **Multi-node, multi-GPU systems**: for RL training (In our experiments, we used 3 nodes, each equipped with 8 A100 GPUs.)
 ---
 ## 1. Start RM Service
 1. Open and edit `rm_service.py`:
